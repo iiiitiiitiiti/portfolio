@@ -16,56 +16,63 @@ const categoryLabel = {
 }[work.data.category];
 ---
 
-<article class="work-card">
-  <a href={`${base}/works/${work.id}/`} class="card-link">
-    <div class="thumb">
+<article class="m-work-card">
+  <a href={`${base}/works/${work.id}/`} class="m-work-card__link">
+    <div class="m-work-card__thumb">
       {
         work.data.thumbnail ? (
-          <img src={`${base}${work.data.thumbnail}`} alt="" loading="lazy" width="640" height="400" />
+          <img
+            class="m-work-card__image"
+            src={`${base}${work.data.thumbnail}`}
+            alt=""
+            loading="lazy"
+            width="640"
+            height="400"
+          />
         ) : (
-          <div class="thumb-placeholder" aria-hidden="true">
-            <span class="display">{initial}</span>
+          <div class="m-work-card__placeholder" aria-hidden="true">
+            <span class="l-display">{initial}</span>
           </div>
         )
       }
     </div>
-    <p class="meta card-meta">
-      <span class="category">{categoryLabel}</span>
-      <time datetime={work.data.date.toISOString().slice(0, 10)}>
+    <p class="l-meta m-work-card__meta">
+      <span class="m-work-card__category">{categoryLabel}</span>
+      <time class="m-work-card__date" datetime={work.data.date.toISOString().slice(0, 10)}>
         {work.data.date.getFullYear()}
       </time>
     </p>
-    <h3 class="display card-title">{work.data.title}</h3>
-    <p class="card-summary">{work.data.summary}</p>
+    <h3 class="l-display m-work-card__title">{work.data.title}</h3>
+    <p class="m-work-card__summary">{work.data.summary}</p>
   </a>
 </article>
 
 <style>
-  .card-link {
+  .m-work-card__link {
     display: block;
     color: inherit;
     text-decoration: none;
   }
 
-  .thumb {
+  .m-work-card__thumb {
     aspect-ratio: 8 / 5;
     overflow: hidden;
     border: 1px solid var(--line);
     background: #fff;
   }
 
-  .thumb img {
+  .m-work-card__image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.4s ease;
   }
 
-  .card-link:hover .thumb img {
+  .m-work-card__link:hover .m-work-card__image {
     transform: scale(1.03);
   }
 
-  .thumb-placeholder {
+  .m-work-card__placeholder {
     width: 100%;
     height: 100%;
     display: grid;
@@ -74,26 +81,26 @@ const categoryLabel = {
     font-size: 3rem;
   }
 
-  .card-meta {
+  .m-work-card__meta {
     display: flex;
     gap: 1em;
     margin-block-start: 1rem;
   }
 
-  .category {
+  .m-work-card__category {
     color: var(--ai);
   }
 
-  .card-title {
+  .m-work-card__title {
     font-size: 1.0625rem;
     margin-block-start: 0.375rem;
   }
 
-  .card-link:hover .card-title {
+  .m-work-card__link:hover .m-work-card__title {
     color: var(--ai);
   }
 
-  .card-summary {
+  .m-work-card__summary {
     font-size: 0.875rem;
     color: var(--muted);
     line-height: 1.8;

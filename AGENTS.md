@@ -1,3 +1,9 @@
+## コーディング規約
+
+- HTML のクラス命名は **BEM**。接頭辞は3種: `m-`（モジュール = 再利用パーツ）/ `u-`（モジュールから外れたユニークなパーツ）/ `l-`（レイアウト・汎用基礎）
+- 作品詳細の本文は「モジュールの組み上げ」で作る。モジュールは `src/components/modules/` に置き、1モジュール = 1 `.astro` ファイル（HTML + scoped CSS + JS を同居させる）
+- モジュールは `src/pages/works/[...slug].astro` で `<Content components={modules} />` により一括注入しているため、`.mdx` 内では import 不要。モジュールを追加したら注入オブジェクトにも追加する
+
 ## Development
 
 When starting the dev server, use background mode:

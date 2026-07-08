@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import WorkCard from '../components/WorkCard.astro';
+import WorksGrid from '../components/WorksGrid.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const works = (await getCollection('works', ({ data }) => !data.draft)).sort(
@@ -11,14 +12,14 @@ const featured = works.slice(0, 6);
 ---
 
 <Base title="Fujimoto Taiga — Portfolio">
-  <section class="hero">
-    <div class="container hero-inner">
-      <p class="tate-label">ポートフォリオ</p>
-      <div>
-        <h1 class="display hero-title">
+  <section class="u-hero">
+    <div class="l-container u-hero__inner">
+      <p class="m-tate-label">ポートフォリオ</p>
+      <div class="u-hero__body">
+        <h1 class="l-display u-hero__title">
           デザインも、道具も、<br />自分でつくる。
         </h1>
-        <p class="hero-lead">
+        <p class="u-hero__lead">
           Web 制作の現場でデザインを担当しながら、Figma プラグインやブックマークレットなど、
           制作を速く正確にする道具を自作しています。
         </p>
@@ -28,15 +29,15 @@ const featured = works.slice(0, 6);
 
   {
     featured.length > 0 && (
-      <section class="works-section">
-        <div class="container">
-          <h2 class="meta section-heading">WORKS</h2>
-          <div class="works-grid">
+      <section class="u-home-works">
+        <div class="l-container">
+          <h2 class="l-meta u-home-works__heading">WORKS</h2>
+          <WorksGrid>
             {featured.map((work) => (
               <WorkCard work={work} />
             ))}
-          </div>
-          <p class="more-link">
+          </WorksGrid>
+          <p class="u-home-works__more">
             <a href={`${base}/works/`}>すべての作品を見る</a>
           </p>
         </div>
@@ -46,38 +47,32 @@ const featured = works.slice(0, 6);
 </Base>
 
 <style>
-  .hero {
+  .u-hero {
     padding-block: var(--space-section);
   }
 
-  .hero-inner {
+  .u-hero__inner {
     display: flex;
     gap: clamp(1.5rem, 5vw, 3.5rem);
     align-items: flex-start;
   }
 
-  .hero-title {
+  .u-hero__title {
     font-size: clamp(1.75rem, 5vw, 3rem);
     font-weight: 700;
   }
 
-  .hero-lead {
+  .u-hero__lead {
     max-width: 34em;
     margin-block-start: 2rem;
     color: var(--muted);
   }
 
-  .section-heading {
+  .u-home-works__heading {
     margin-block-end: 2.5rem;
   }
 
-  .works-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-    gap: 2.5rem 2rem;
-  }
-
-  .more-link {
+  .u-home-works__more {
     margin-block-start: 3rem;
     text-align: right;
   }
