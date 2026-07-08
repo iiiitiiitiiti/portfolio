@@ -2,7 +2,7 @@ import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 const works = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/works' }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/works' }),
   schema: z.object({
     title: z.string(),
     // design: デザイン作品 / tool: 自作ツール / client-work: 実務の制作実績

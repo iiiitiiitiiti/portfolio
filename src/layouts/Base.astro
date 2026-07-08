@@ -26,13 +26,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <title>{title}</title>
   </head>
   <body>
-    <header class="site-header">
-      <div class="container header-inner">
-        <a href={`${base}/`} class="site-name display">FUJIMOTO Taiga</a>
+    <header class="u-header">
+      <div class="l-container u-header__inner">
+        <a href={`${base}/`} class="l-display u-header__name">FUJIMOTO Taiga</a>
         <nav aria-label="メイン">
-          <ul class="nav-list">
-            <li><a href={`${base}/works/`}>Works</a></li>
-            <li><a href={`${base}/about/`}>About</a></li>
+          <ul class="u-header__nav-list">
+            <li class="u-header__nav-item"><a href={`${base}/works/`} class="u-header__nav-link">Works</a></li>
+            <li class="u-header__nav-item"><a href={`${base}/about/`} class="u-header__nav-link">About</a></li>
           </ul>
         </nav>
       </div>
@@ -42,52 +42,52 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <slot />
     </main>
 
-    <footer class="site-footer">
-      <div class="container">
-        <p class="meta">&copy; {new Date().getFullYear()} Fujimoto Taiga</p>
+    <footer class="u-footer">
+      <div class="l-container">
+        <p class="l-meta u-footer__copyright">&copy; {new Date().getFullYear()} Fujimoto Taiga</p>
       </div>
     </footer>
   </body>
 </html>
 
 <style>
-  .site-header {
+  .u-header {
     border-block-end: 1px solid var(--line);
   }
 
-  .header-inner {
+  .u-header__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-block: 1.25rem;
   }
 
-  .site-name {
+  .u-header__name {
     font-size: 1rem;
     letter-spacing: 0.14em;
     color: var(--ink);
     text-decoration: none;
   }
 
-  .nav-list {
+  .u-header__nav-list {
     display: flex;
     gap: 2rem;
     list-style: none;
     padding: 0;
   }
 
-  .nav-list a {
+  .u-header__nav-link {
     color: var(--ink);
     text-decoration: none;
     font-size: 0.9375rem;
     letter-spacing: 0.08em;
   }
 
-  .nav-list a:hover {
+  .u-header__nav-link:hover {
     color: var(--ai);
   }
 
-  .site-footer {
+  .u-footer {
     border-block-start: 1px solid var(--line);
     padding-block: 2.5rem;
     margin-block-start: var(--space-section);

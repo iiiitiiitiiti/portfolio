@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import WorkCard from '../../components/WorkCard.astro';
+import WorksGrid from '../../components/WorksGrid.astro';
 
 const works = (await getCollection('works', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
@@ -15,24 +16,24 @@ const categories = [
 ---
 
 <Base title="Works — Fujimoto Taiga">
-  <div class="container">
-    <h1 class="display page-title">Works</h1>
+  <div class="l-container">
+    <h1 class="l-display u-works-index__title">Works</h1>
 
     {
       categories.map(({ key, label, tate }) => {
         const items = works.filter((w) => w.data.category === key);
         if (items.length === 0) return null;
         return (
-          <section class="category-section">
-            <div class="category-header">
-              <p class="tate-label">{tate}</p>
-              <h2 class="display category-title">{label}</h2>
+          <section class="u-works-index__category">
+            <div class="u-works-index__category-header">
+              <p class="m-tate-label">{tate}</p>
+              <h2 class="l-display u-works-index__category-title">{label}</h2>
             </div>
-            <div class="works-grid">
+            <WorksGrid>
               {items.map((work) => (
                 <WorkCard work={work} />
               ))}
-            </div>
+            </WorksGrid>
           </section>
         );
       })
@@ -41,33 +42,27 @@ const categories = [
 </Base>
 
 <style>
-  .page-title {
+  .u-works-index__title {
     font-size: clamp(1.75rem, 4vw, 2.5rem);
     padding-block: clamp(3rem, 8vw, 5rem) 0;
   }
 
-  .category-section {
+  .u-works-index__category {
     margin-block-start: var(--space-section);
   }
 
-  .category-section:first-of-type {
+  .u-works-index__category:first-of-type {
     margin-block-start: clamp(3rem, 8vw, 5rem);
   }
 
-  .category-header {
+  .u-works-index__category-header {
     display: flex;
     gap: 1.25rem;
     align-items: flex-start;
     margin-block-end: 2.5rem;
   }
 
-  .category-title {
+  .u-works-index__category-title {
     font-size: 1.375rem;
-  }
-
-  .works-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-    gap: 2.5rem 2rem;
   }
 </style>

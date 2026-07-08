@@ -1,6 +1,11 @@
 /* ============================================
    デザイントークン
    紙白 × 墨 × 藍 — 縦書きラベルを signature に
+
+   クラス命名は BEM。接頭辞:
+   - m- : モジュール（再利用するパーツ）
+   - u- : モジュールから外れたユニークなパーツ
+   - l- : レイアウト・汎用基礎
    ============================================ */
 :root {
   --paper: #fbfaf7;
@@ -57,29 +62,29 @@ a:hover {
   outline-offset: 3px;
 }
 
-/* ---- 汎用 ---- */
-.container {
+/* ---- l- レイアウト・汎用基礎 ---- */
+.l-container {
   max-width: var(--max-width);
   margin-inline: auto;
   padding-inline: clamp(1.25rem, 5vw, 3rem);
 }
 
-.display {
+.l-display {
   font-family: var(--font-display);
   font-weight: 600;
   line-height: 1.4;
   letter-spacing: 0.04em;
 }
 
-.meta {
+.l-meta {
   font-family: var(--font-meta);
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   color: var(--muted);
 }
 
-/* ---- signature: 縦書きラベル ---- */
-.tate-label {
+/* ---- m-tate-label: 縦書きラベル（signature） ---- */
+.m-tate-label {
   writing-mode: vertical-rl;
   font-family: var(--font-display);
   font-size: 0.8125rem;
