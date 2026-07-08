@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import '../styles/pages/about.css';
 ---
 
 <Base title="About — Fujimoto Taiga">
@@ -32,35 +33,3 @@ import Base from '../layouts/Base.astro';
     </section>
   </div>
 </Base>
-
-<style>
-  .u-about {
-    max-width: 46rem;
-  }
-
-  .u-about__header {
-    display: flex;
-    gap: 1.25rem;
-    align-items: flex-start;
-    padding-block-start: clamp(3rem, 8vw, 5rem);
-  }
-
-  .u-about__title {
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
-  }
-
-  .u-about__body {
-    margin-block-start: 3rem;
-  }
-
-  .u-about__section-title {
-    font-size: 1.25rem;
-    margin-block: 2.5rem 1rem;
-    padding-block-end: 0.5rem;
-    border-block-end: 1px solid var(--line);
-  }
-
-  .u-about__body ul {
-    padding-inline-start: 1.5em;
-  }
-</style>

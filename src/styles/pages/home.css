@@ -1,0 +1,29 @@
+.u-hero {
+  padding-block: var(--space-section);
+}
+
+.u-hero__inner {
+  display: flex;
+  gap: clamp(1.5rem, 5vw, 3.5rem);
+  align-items: flex-start;
+}
+
+.u-hero__title {
+  font-size: clamp(1.75rem, 5vw, 3rem);
+  font-weight: 700;
+}
+
+.u-hero__lead {
+  max-width: 34em;
+  margin-block-start: 2rem;
+  color: var(--muted);
+}
+
+.u-home-works__heading {
+  margin-block-end: 2.5rem;
+}
+
+.u-home-works__more {
+  margin-block-start: 3rem;
+  text-align: right;
+}

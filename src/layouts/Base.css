@@ -1,0 +1,41 @@
+.u-header {
+  border-block-end: 1px solid var(--line);
+}
+
+.u-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 1.25rem;
+}
+
+.u-header__name {
+  font-size: 1rem;
+  letter-spacing: 0.14em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.u-header__nav-list {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+}
+
+.u-header__nav-link {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.9375rem;
+  letter-spacing: 0.08em;
+}
+
+.u-header__nav-link:hover {
+  color: var(--ai);
+}
+
+.u-footer {
+  border-block-start: 1px solid var(--line);
+  padding-block: 2.5rem;
+  margin-block-start: var(--space-section);
+}

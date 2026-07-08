@@ -83,19 +83,6 @@ a:hover {
   color: var(--muted);
 }
 
-/* ---- m-tate-label: 縦書きラベル（signature） ---- */
-.m-tate-label {
-  writing-mode: vertical-rl;
-  font-family: var(--font-display);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.35em;
-  color: var(--ai);
-  border-inline-start: 1px solid var(--line);
-  padding-inline-start: 0.75rem;
-  min-height: 7rem;
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

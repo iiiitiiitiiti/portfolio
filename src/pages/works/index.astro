@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import WorkCard from '../../components/WorkCard.astro';
 import WorksGrid from '../../components/WorksGrid.astro';
+import '../../styles/pages/works-index.css';
 
 const works = (await getCollection('works', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
@@ -40,29 +41,3 @@ const categories = [
     }
   </div>
 </Base>
-
-<style>
-  .u-works-index__title {
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
-    padding-block: clamp(3rem, 8vw, 5rem) 0;
-  }
-
-  .u-works-index__category {
-    margin-block-start: var(--space-section);
-  }
-
-  .u-works-index__category:first-of-type {
-    margin-block-start: clamp(3rem, 8vw, 5rem);
-  }
-
-  .u-works-index__category-header {
-    display: flex;
-    gap: 1.25rem;
-    align-items: flex-start;
-    margin-block-end: 2.5rem;
-  }
-
-  .u-works-index__category-title {
-    font-size: 1.375rem;
-  }
-</style>

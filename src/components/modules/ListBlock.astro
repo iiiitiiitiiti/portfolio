@@ -1,4 +1,6 @@
 ---
+import './ListBlock.css';
+
 // リストモジュール。items に文字列配列を渡す。ordered で番号付きに切り替え
 interface Props {
   items: string[];
@@ -18,18 +20,3 @@ const Tag = ordered ? 'ol' : 'ul';
     </Tag>
   )
 }
-
-<style>
-  .m-list {
-    margin-block: 1rem;
-    padding-inline-start: 1.5em;
-  }
-
-  .m-list__item {
-    margin-block: 0.25rem;
-  }
-
-  .m-list__item::marker {
-    color: var(--ai);
-  }
-</style>

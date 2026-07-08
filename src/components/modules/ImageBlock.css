@@ -1,0 +1,54 @@
+.m-image {
+  margin-block: 1.5rem;
+}
+
+.m-image__zoom {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid var(--line);
+  background: none;
+  cursor: zoom-in;
+}
+
+.m-image__img {
+  width: 100%;
+}
+
+.m-image__caption {
+  margin-block-start: 0.5rem;
+}
+
+.m-image__dialog {
+  /* global.css の * { margin: 0 } リセットで UA の中央寄せ（margin: auto）が消えるため明示する */
+  margin: auto;
+  max-width: min(90vw, 72rem);
+  max-height: 90vh;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.m-image__dialog::backdrop {
+  background: rgb(31 29 26 / 0.85);
+}
+
+.m-image__full {
+  max-height: 82vh;
+  width: auto;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+.m-image__close {
+  display: block;
+  margin-inline-start: auto;
+  margin-block-end: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: #fff;
+  background: none;
+  border: 1px solid rgb(255 255 255 / 0.5);
+  cursor: pointer;
+}

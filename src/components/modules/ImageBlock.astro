@@ -1,4 +1,6 @@
 ---
+import './ImageBlock.css';
+
 // 画像モジュール。クリックで原寸拡大（dialog）。src は public/ からのルートパス（例: /images/a.png）
 interface Props {
   src: string;
@@ -24,75 +26,6 @@ const resolved = src.startsWith('/') ? `${base}${src}` : src;
   </dialog>
 </figure>
 
-<style>
-  .m-image {
-    margin-block: 1.5rem;
-  }
-
-  .m-image__zoom {
-    display: block;
-    width: 100%;
-    padding: 0;
-    border: 1px solid var(--line);
-    background: none;
-    cursor: zoom-in;
-  }
-
-  .m-image__img {
-    width: 100%;
-  }
-
-  .m-image__caption {
-    margin-block-start: 0.5rem;
-  }
-
-  .m-image__dialog {
-    /* global.css の * { margin: 0 } リセットで UA の中央寄せ（margin: auto）が消えるため明示する */
-    margin: auto;
-    max-width: min(90vw, 72rem);
-    max-height: 90vh;
-    padding: 0;
-    border: none;
-    background: transparent;
-  }
-
-  .m-image__dialog::backdrop {
-    background: rgb(31 29 26 / 0.85);
-  }
-
-  .m-image__full {
-    max-height: 82vh;
-    width: auto;
-    max-width: 100%;
-    margin-inline: auto;
-  }
-
-  .m-image__close {
-    display: block;
-    margin-inline-start: auto;
-    margin-block-end: 0.5rem;
-    padding: 0.25rem 0.75rem;
-    font-family: var(--font-body);
-    font-size: 0.8125rem;
-    color: #fff;
-    background: none;
-    border: 1px solid rgb(255 255 255 / 0.5);
-    cursor: pointer;
-  }
-</style>
-
 <script>
-  // クリックで dialog を開閉する。dialog 自体のクリック（= 背景クリック）でも閉じる
-  document.querySelectorAll<HTMLElement>('.m-image').forEach((figure) => {
-    const zoom = figure.querySelector<HTMLButtonElement>('.m-image__zoom');
-    const dialog = figure.querySelector<HTMLDialogElement>('.m-image__dialog');
-    const close = figure.querySelector<HTMLButtonElement>('.m-image__close');
-    if (!zoom || !dialog || !close) return;
-
-    zoom.addEventListener('click', () => dialog.showModal());
-    close.addEventListener('click', () => dialog.close());
-    dialog.addEventListener('click', (event) => {
-      if (event.target === dialog) dialog.close();
-    });
-  });
+  import './ImageBlock.js';
 </script>
