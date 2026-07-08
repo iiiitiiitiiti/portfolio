@@ -14,6 +14,16 @@ npm run build    # 本番ビルド（dist/ に出力）
 - main ブランチへ push すると GitHub Actions が自動でビルド・公開する（`.github/workflows/deploy.yml`）
 - 公開 URL: `https://<GitHubユーザー名>.github.io/portfolio/`
 
+## 仕組みの全体像
+
+Astro は「ビルド時に HTML を組み立てる道具」。ブラウザに Astro の機能は届かず、届くのは素の HTML / CSS / JS だけ。
+
+- `.astro` ファイルは **HTML の上位互換**。特殊なのは冒頭の `---` で挟まれた部分（frontmatter）だけで、ここはビルド時に1回だけ実行される JS（データ取得・import 置き場）。それより下は普通の HTML
+- `<Heading>` のような**大文字始まりのタグは自作部品の呼び出し**。ビルド時にその部品の HTML に展開される
+- `npm run build` が `dist/` に完成品を出力する。`npm run dev` は保存のたびにこの変換を自動でやり直してブラウザに映しているだけ
+
+つまり「書いた HTML がビルドで合体して静的サイトになる」が全体像で、それ以上の魔法はない。
+
 ## 作品の追加方法
 
 `src/content/works/` に `.mdx` ファイルを1枚置き、本文を**モジュールの組み上げ**で書く。
@@ -59,6 +69,43 @@ draft: false                     # true にすると非公開（下書き・公�
 - `.mdx` の地の文に `{` や `<` をそのまま書くと構文エラーになる（`\{` のようにエスケープする）
 - プレーン Markdown（`.md`）の作品ファイルも引き続き使える（h2/段落などに最低限のスタイルが当たる）
 
+## ページの追加方法
+
+**ページは必ず「フォルダ + `index.astro`」で作る。フォルダのパスがそのまま URL になる**（従来の静的サイトで「1ページ = 1フォルダ + index.html」と作るのと同じ感覚。ビルド後の実体も `skills/index.html` になる）。
+
+```
+src/pages/skills/index.astro        → /portfolio/skills/
+src/pages/skills/figma/index.astro  → /portfolio/skills/figma/
+src/pages/contact/index.astro       → /portfolio/contact/
+```
+
+手順は3ステップ:
+
+1. `src/pages/` にフォルダを作り、中に `index.astro` を置く（フォルダ名が URL になる）
+2. `src/styles/pages/` にページ専用 CSS を作る。ファイル名はフォルダ階層をハイフンでつなぐ（`skills/figma/` → `skills-figma.css`）。数が増えて見づらくなったら CSS 側もフォルダを掘ってよい
+3. ページ本体を書く。`<Base>` で囲めばヘッダー・フッターが付く。クラスはそのページ固有なら `u-`、他ページでも使い回すなら `m-` モジュールに切り出す
+
+```astro
+---
+import Base from '../layouts/Base.astro';
+import '../styles/pages/skills.css';
+---
+
+<Base title="Skills — Fujimoto Taiga">
+  <div class="l-container u-skills">
+    <h1 class="l-display u-skills__title">Skills</h1>
+    <!-- ここから下は普通の HTML -->
+  </div>
+</Base>
+```
+
+**ページを足さなくていいケース**:
+
+- 作品の追加 → `src/content/works/` に `.mdx` を置くだけ（`works/[...slug].astro` が詳細ページを自動生成する）
+- 全ページ共通の部品 → `src/layouts/Base.astro` を編集すれば全ページに反映される
+
+**注意**: `src/pages/` には `.astro` 以外のファイル（CSS 等）を置かない。ページとして扱われず無視される（読み込まれない）ため、ページ用 CSS は `src/styles/pages/` に置く。
+
 ## コーディング規約
 
 HTML のクラス命名は **BEM**。接頭辞は3種:
@@ -83,8 +130,8 @@ CSS / JS はファイル分離で管理する:
 |---|---|
 | `src/pages/index.astro` | トップ（ヒーロー + 最新作品6件） |
 | `src/pages/works/index.astro` | 作品一覧（カテゴリ別） |
-| `src/pages/works/[...slug].astro` | 作品詳細（モジュール注入もここ） |
-| `src/pages/about.astro` | プロフィール |
+| `src/pages/works/[...slug].astro` | 作品詳細（モジュール注入もここ。動的ルートのため index 方式の例外） |
+| `src/pages/about/index.astro` | プロフィール |
 | `src/content.config.ts` | 作品コレクションのスキーマ定義 |
 | `src/components/modules/` | 作品本文用モジュール（.astro + .css + .js のセット） |
 | `src/components/` | サイト用モジュール（WorkCard・WorksGrid。同名 .css が隣接） |

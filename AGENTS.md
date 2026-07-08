@@ -4,6 +4,7 @@
 - **CSS は `<style>` タグに書かず、別ファイルで管理する**（`.astro` の frontmatter で import）。JS も同様に別ファイルへ分け、`<script>` 内は `import './xxx.js';` の1行のみにする。ビルド出力も外部 CSS になるよう `astro.config.mjs` で `build.inlineStylesheets: 'never'` を設定済み（変更しない）
 - CSS ファイルの置き場所: モジュール・コンポーネント・レイアウトは同名で**隣接**（例: `Heading.astro` + `Heading.css`）。ページ用は `src/pages/` に置けない（ルーティング対象になる）ため `src/styles/pages/` に置く
 - 作品詳細の本文は「モジュールの組み上げ」で作る。モジュールは `src/components/modules/` に置き、1モジュール = `.astro`（HTML）+ `.css`（+ 必要なら `.js`）のファイルセット
+- **ページは必ず「フォルダ + `index.astro`」で作る**（例: `src/pages/skills/index.astro` → `/skills/`）。フラットな `skills.astro` 形式は使わない。動的ルート（`works/[...slug].astro`）のみ例外。URL 形式はフォルダ型（`build.format` は変更しない）
 - モジュールは `src/pages/works/[...slug].astro` で `<Content components={modules} />` により一括注入しているため、`.mdx` 内では import 不要。モジュールを追加したら注入オブジェクトにも追加する
 
 ## Development
