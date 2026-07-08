@@ -1,4 +1,6 @@
 ---
+import './Heading.css';
+
 // 見出しモジュール。level=2（節見出し・罫線付き）/ level=3（小見出し）
 interface Props {
   level?: 2 | 3;
@@ -11,20 +13,3 @@ const Tag = level === 3 ? 'h3' : 'h2';
 <Tag class:list={['l-display', 'm-heading', { 'm-heading--sub': level === 3 }]}>
   <slot />
 </Tag>
-
-<style>
-  .m-heading {
-    font-size: 1.25rem;
-    letter-spacing: 0.04em;
-    margin-block: 2.5rem 1rem;
-    padding-block-end: 0.5rem;
-    border-block-end: 1px solid var(--line);
-  }
-
-  .m-heading--sub {
-    font-size: 1.0625rem;
-    margin-block: 2rem 0.75rem;
-    padding-block-end: 0;
-    border-block-end: none;
-  }
-</style>

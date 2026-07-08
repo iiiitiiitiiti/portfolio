@@ -12,4 +12,9 @@ export default defineConfig({
   base: '/portfolio',
 
   integrations: [mdx()],
+
+  build: {
+    // CSS は HTML へインライン化せず、常に外部 CSS ファイルとして出力する（規約: Style タグではなく別ファイル管理）
+    inlineStylesheets: 'never',
+  },
 });

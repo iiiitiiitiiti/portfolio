@@ -46,12 +46,14 @@ draft: false                     # true にすると非公開（下書き・公�
 
 ### モジュール
 
+モジュールは `src/components/modules/` に **HTML（.astro）+ CSS（.css）+ 必要なら JS（.js）のファイルセット**で置く。
+
 | モジュール | ファイル | 役割 |
 |---|---|---|
-| `Heading` | `src/components/modules/Heading.astro` | 見出し（`level={3}` で小見出し） |
-| `Text` | `src/components/modules/Text.astro` | 通常テキスト（段落） |
-| `ListBlock` | `src/components/modules/ListBlock.astro` | リスト（`ordered` で番号付き） |
-| `ImageBlock` | `src/components/modules/ImageBlock.astro` | 画像（クリックで拡大表示） |
+| `Heading` | `Heading.astro` + `Heading.css` | 見出し（`level={3}` で小見出し） |
+| `Text` | `Text.astro` + `Text.css` | 通常テキスト（段落） |
+| `ListBlock` | `ListBlock.astro` + `ListBlock.css` | リスト（`ordered` で番号付き） |
+| `ImageBlock` | `ImageBlock.astro` + `ImageBlock.css` + `ImageBlock.js` | 画像（クリックで拡大表示） |
 
 - import は不要（`[...slug].astro` が一括注入している）。**モジュールを新規追加したら `[...slug].astro` の注入オブジェクトにも追加する**
 - `.mdx` の地の文に `{` や `<` をそのまま書くと構文エラーになる（`\{` のようにエスケープする）
@@ -67,6 +69,14 @@ HTML のクラス命名は **BEM**。接頭辞は3種:
 | `u-` | モジュールから外れたユニークなパーツ | `u-hero`, `u-header`, `u-work` |
 | `l-` | レイアウト・汎用基礎 | `l-container`, `l-display`, `l-meta` |
 
+CSS / JS はファイル分離で管理する:
+
+- **CSS は `<style>` タグに書かない**。別ファイルにして `.astro` の frontmatter で import する
+  - モジュール・コンポーネント・レイアウト → 同名 CSS を**隣に置く**（`Heading.astro` + `Heading.css`）
+  - ページ用 → `src/styles/pages/` に置く（`src/pages/` はルーティング対象のため CSS を置けない）
+- **JS も別ファイル**にして、`<script>` 内は `import './xxx.js';` の1行のみにする
+- ビルド出力もインライン化させず外部 CSS のまま配信する（`astro.config.mjs` の `build.inlineStylesheets: 'never'`）
+
 ## サイト構成
 
 | パス | 内容 |
@@ -76,10 +86,12 @@ HTML のクラス命名は **BEM**。接頭辞は3種:
 | `src/pages/works/[...slug].astro` | 作品詳細（モジュール注入もここ） |
 | `src/pages/about.astro` | プロフィール |
 | `src/content.config.ts` | 作品コレクションのスキーマ定義 |
-| `src/components/modules/` | 作品本文用モジュール |
-| `src/components/` | サイト用モジュール（WorkCard・WorksGrid） |
-| `src/layouts/Base.astro` | 共通レイアウト（ヘッダー・フッター） |
+| `src/components/modules/` | 作品本文用モジュール（.astro + .css + .js のセット） |
+| `src/components/` | サイト用モジュール（WorkCard・WorksGrid。同名 .css が隣接） |
+| `src/layouts/Base.astro` + `Base.css` | 共通レイアウト（ヘッダー・フッター） |
 | `src/styles/global.css` | デザイントークン（色・書体・余白）と l- 基礎クラス |
+| `src/styles/pages/` | 各ページ専用 CSS（home / works-index / work / about） |
+| `src/styles/modules/tate-label.css` | 縦書きラベル（クラスのみのモジュール） |
 
 ## 注意事項
 

@@ -5,6 +5,7 @@ import Heading from '../../components/modules/Heading.astro';
 import Text from '../../components/modules/Text.astro';
 import ListBlock from '../../components/modules/ListBlock.astro';
 import ImageBlock from '../../components/modules/ImageBlock.astro';
+import '../../styles/pages/work.css';
 
 export async function getStaticPaths() {
   const works = await getCollection('works', ({ data }) => !data.draft);
@@ -60,7 +61,7 @@ const categoryLabel = {
       )
     }
 
-    <div class="u-work__body">
+    <div class:list={['u-work__body', { 'u-work__body--md': work.filePath?.endsWith('.md') }]}>
       <Content components={modules} />
     </div>
 
@@ -77,82 +78,3 @@ const categoryLabel = {
     <p class="u-work__back"><a href={`${base}/works/`}>作品一覧へ戻る</a></p>
   </article>
 </Base>
-
-<style>
-  .u-work {
-    max-width: 46rem;
-    padding-block-start: clamp(3rem, 8vw, 5rem);
-  }
-
-  .u-work__category {
-    color: var(--ai);
-    margin-inline-end: 1em;
-  }
-
-  .u-work__title {
-    font-size: clamp(1.5rem, 4vw, 2.25rem);
-    margin-block-start: 0.75rem;
-  }
-
-  .u-work__summary {
-    color: var(--muted);
-    margin-block-start: 1rem;
-  }
-
-  .u-work__tag-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 1.25rem;
-    list-style: none;
-    padding: 0;
-    margin-block-start: 1.25rem;
-  }
-
-  .u-work__thumb {
-    border: 1px solid var(--line);
-    margin-block-start: 2.5rem;
-  }
-
-  .u-work__body {
-    margin-block-start: 3rem;
-  }
-
-  /* プレーン Markdown（.md）用のフォールバックスタイル。
-     .mdx でモジュールを使う場合はモジュール側の CSS が当たる */
-  .u-work__body :global(h2) {
-    font-family: var(--font-display);
-    font-size: 1.25rem;
-    letter-spacing: 0.04em;
-    margin-block: 2.5rem 1rem;
-    padding-block-end: 0.5rem;
-    border-block-end: 1px solid var(--line);
-  }
-
-  .u-work__body :global(h3) {
-    font-size: 1.0625rem;
-    margin-block: 2rem 0.75rem;
-  }
-
-  .u-work__body :global(p) {
-    margin-block: 1rem;
-  }
-
-  .u-work__body :global(ul) {
-    padding-inline-start: 1.5em;
-  }
-
-  .u-work__body :global(img) {
-    border: 1px solid var(--line);
-    margin-block: 1.5rem;
-  }
-
-  .u-work__url {
-    margin-block-start: 2.5rem;
-  }
-
-  .u-work__back {
-    margin-block-start: 4rem;
-    padding-block-start: 1.5rem;
-    border-block-start: 1px solid var(--line);
-  }
-</style>
