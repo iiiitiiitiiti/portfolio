@@ -1,0 +1,104 @@
+/* ============================================
+   デザイントークン
+   紙白 × 墨 × 藍 — 縦書きラベルを signature に
+   ============================================ */
+:root {
+  --paper: #fbfaf7;
+  --ink: #1f1d1a;
+  --ai: #2d4b73;
+  --line: #e3e0d8;
+  --muted: #6e6a61;
+
+  --font-display: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  --font-body: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+  --font-meta: ui-monospace, 'SF Mono', 'Cascadia Mono', Consolas, monospace;
+
+  --max-width: 68rem;
+  --space-section: clamp(5rem, 12vw, 9rem);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--ai);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ai);
+  outline-offset: 3px;
+}
+
+/* ---- 汎用 ---- */
+.container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 3rem);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+}
+
+.meta {
+  font-family: var(--font-meta);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+
+/* ---- signature: 縦書きラベル ---- */
+.tate-label {
+  writing-mode: vertical-rl;
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  color: var(--ai);
+  border-inline-start: 1px solid var(--line);
+  padding-inline-start: 0.75rem;
+  min-height: 7rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,106 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  work: CollectionEntry<'works'>;
+}
+
+const { work } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+// プレースホルダー用の頭文字（先頭の括弧・記号は飛ばす）
+const initial = work.data.title.replace(/^[（）()【】\[\]「」・\s]+/, '').slice(0, 1);
+const categoryLabel = {
+  design: 'デザイン',
+  tool: 'ツール',
+  'client-work': '実務',
+}[work.data.category];
+---
+
+<article class="work-card">
+  <a href={`${base}/works/${work.id}/`} class="card-link">
+    <div class="thumb">
+      {
+        work.data.thumbnail ? (
+          <img src={`${base}${work.data.thumbnail}`} alt="" loading="lazy" width="640" height="400" />
+        ) : (
+          <div class="thumb-placeholder" aria-hidden="true">
+            <span class="display">{initial}</span>
+          </div>
+        )
+      }
+    </div>
+    <p class="meta card-meta">
+      <span class="category">{categoryLabel}</span>
+      <time datetime={work.data.date.toISOString().slice(0, 10)}>
+        {work.data.date.getFullYear()}
+      </time>
+    </p>
+    <h3 class="display card-title">{work.data.title}</h3>
+    <p class="card-summary">{work.data.summary}</p>
+  </a>
+</article>
+
+<style>
+  .card-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .thumb {
+    aspect-ratio: 8 / 5;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: #fff;
+  }
+
+  .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .card-link:hover .thumb img {
+    transform: scale(1.03);
+  }
+
+  .thumb-placeholder {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    color: var(--line);
+    font-size: 3rem;
+  }
+
+  .card-meta {
+    display: flex;
+    gap: 1em;
+    margin-block-start: 1rem;
+  }
+
+  .category {
+    color: var(--ai);
+  }
+
+  .card-title {
+    font-size: 1.0625rem;
+    margin-block-start: 0.375rem;
+  }
+
+  .card-link:hover .card-title {
+    color: var(--ai);
+  }
+
+  .card-summary {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-block-start: 0.375rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
