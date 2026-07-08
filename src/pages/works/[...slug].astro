@@ -1,0 +1,144 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const works = await getCollection('works', ({ data }) => !data.draft);
+  return works.map((work) => ({
+    params: { slug: work.id },
+    props: { work },
+  }));
+}
+
+const { work } = Astro.props;
+const { Content } = await render(work);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const categoryLabel = {
+  design: 'デザイン作品',
+  tool: '自作ツール',
+  'client-work': '実務の制作実績',
+}[work.data.category];
+---
+
+<Base title={`${work.data.title} — Fujimoto Taiga`} description={work.data.summary}>
+  <article class="container work-detail">
+    <header class="work-header">
+      <p class="meta">
+        <span class="category">{categoryLabel}</span>
+        <time datetime={work.data.date.toISOString().slice(0, 10)}>
+          {work.data.date.getFullYear()}.{String(work.data.date.getMonth() + 1).padStart(2, '0')}
+        </time>
+      </p>
+      <h1 class="display work-title">{work.data.title}</h1>
+      <p class="work-summary">{work.data.summary}</p>
+      {
+        work.data.tags.length > 0 && (
+          <ul class="meta tag-list">
+            {work.data.tags.map((tag) => (
+              <li>{tag}</li>
+            ))}
+          </ul>
+        )
+      }
+    </header>
+
+    {
+      work.data.thumbnail && (
+        <img class="work-thumb" src={`${base}${work.data.thumbnail}`} alt="" width="1280" height="800" />
+      )
+    }
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    {
+      work.data.url && (
+        <p class="work-url">
+          <a href={work.data.url} target="_blank" rel="noopener noreferrer">
+            公開ページを見る
+          </a>
+        </p>
+      )
+    }
+
+    <p class="back-link"><a href={`${base}/works/`}>作品一覧へ戻る</a></p>
+  </article>
+</Base>
+
+<style>
+  .work-detail {
+    max-width: 46rem;
+    padding-block-start: clamp(3rem, 8vw, 5rem);
+  }
+
+  .work-header .category {
+    color: var(--ai);
+    margin-inline-end: 1em;
+  }
+
+  .work-title {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    margin-block-start: 0.75rem;
+  }
+
+  .work-summary {
+    color: var(--muted);
+    margin-block-start: 1rem;
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    list-style: none;
+    padding: 0;
+    margin-block-start: 1.25rem;
+  }
+
+  .work-thumb {
+    border: 1px solid var(--line);
+    margin-block-start: 2.5rem;
+  }
+
+  .prose {
+    margin-block-start: 3rem;
+  }
+
+  .prose :global(h2) {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    letter-spacing: 0.04em;
+    margin-block: 2.5rem 1rem;
+    padding-block-end: 0.5rem;
+    border-block-end: 1px solid var(--line);
+  }
+
+  .prose :global(h3) {
+    font-size: 1.0625rem;
+    margin-block: 2rem 0.75rem;
+  }
+
+  .prose :global(p) {
+    margin-block: 1rem;
+  }
+
+  .prose :global(ul) {
+    padding-inline-start: 1.5em;
+  }
+
+  .prose :global(img) {
+    border: 1px solid var(--line);
+    margin-block: 1.5rem;
+  }
+
+  .work-url {
+    margin-block-start: 2.5rem;
+  }
+
+  .back-link {
+    margin-block-start: 4rem;
+    padding-block-start: 1.5rem;
+    border-block-start: 1px solid var(--line);
+  }
+</style>

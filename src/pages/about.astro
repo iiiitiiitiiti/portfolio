@@ -1,0 +1,66 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="About — Fujimoto Taiga">
+  <div class="container about">
+    <div class="about-header">
+      <p class="tate-label">自己紹介</p>
+      <h1 class="display page-title">About</h1>
+    </div>
+
+    <section class="about-body">
+      <h2 class="display">Fujimoto Taiga</h2>
+      <p>
+        ここにプロフィールを書きます（サンプル文です。実際の経歴に書き換えてください）。
+        Web 制作会社でデザイン業務に携わりながら、Figma・Illustrator・Photoshop
+        のプラグインやブックマークレットなど、制作現場の道具を自作しています。
+      </p>
+
+      <h2 class="display">できること</h2>
+      <ul>
+        <li>Web サイトのビジュアルデザイン（サンプル項目・要編集）</li>
+        <li>Figma / Illustrator / Photoshop プラグインの開発</li>
+        <li>HTML / CSS / JavaScript による実装</li>
+      </ul>
+
+      <h2 class="display">連絡先</h2>
+      <p>
+        ここに連絡手段を書きます（メールアドレスの直書きはスパムの的になるため、
+        GitHub プロフィールや各種 SNS へのリンクを推奨します）。
+      </p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .about {
+    max-width: 46rem;
+  }
+
+  .about-header {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding-block-start: clamp(3rem, 8vw, 5rem);
+  }
+
+  .page-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+  }
+
+  .about-body {
+    margin-block-start: 3rem;
+  }
+
+  .about-body h2 {
+    font-size: 1.25rem;
+    margin-block: 2.5rem 1rem;
+    padding-block-end: 0.5rem;
+    border-block-end: 1px solid var(--line);
+  }
+
+  .about-body ul {
+    padding-inline-start: 1.5em;
+  }
+</style>

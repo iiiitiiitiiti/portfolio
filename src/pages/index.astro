@@ -1,0 +1,84 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import WorkCard from '../components/WorkCard.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const works = (await getCollection('works', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+const featured = works.slice(0, 6);
+---
+
+<Base title="Fujimoto Taiga — Portfolio">
+  <section class="hero">
+    <div class="container hero-inner">
+      <p class="tate-label">ポートフォリオ</p>
+      <div>
+        <h1 class="display hero-title">
+          デザインも、道具も、<br />自分でつくる。
+        </h1>
+        <p class="hero-lead">
+          Web 制作の現場でデザインを担当しながら、Figma プラグインやブックマークレットなど、
+          制作を速く正確にする道具を自作しています。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {
+    featured.length > 0 && (
+      <section class="works-section">
+        <div class="container">
+          <h2 class="meta section-heading">WORKS</h2>
+          <div class="works-grid">
+            {featured.map((work) => (
+              <WorkCard work={work} />
+            ))}
+          </div>
+          <p class="more-link">
+            <a href={`${base}/works/`}>すべての作品を見る</a>
+          </p>
+        </div>
+      </section>
+    )
+  }
+</Base>
+
+<style>
+  .hero {
+    padding-block: var(--space-section);
+  }
+
+  .hero-inner {
+    display: flex;
+    gap: clamp(1.5rem, 5vw, 3.5rem);
+    align-items: flex-start;
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 5vw, 3rem);
+    font-weight: 700;
+  }
+
+  .hero-lead {
+    max-width: 34em;
+    margin-block-start: 2rem;
+    color: var(--muted);
+  }
+
+  .section-heading {
+    margin-block-end: 2.5rem;
+  }
+
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    gap: 2.5rem 2rem;
+  }
+
+  .more-link {
+    margin-block-start: 3rem;
+    text-align: right;
+  }
+</style>
