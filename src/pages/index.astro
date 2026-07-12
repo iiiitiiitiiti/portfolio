@@ -15,16 +15,17 @@ const featured = works.slice(0, 6);
 <Base title="Fujimoto Taiga — Portfolio">
   <section class="u-hero">
     <div class="l-container u-hero__inner">
-      <p class="m-tate-label">ポートフォリオ</p>
+      <p class="l-meta u-hero__index">INDEX / 2026</p>
       <div class="u-hero__body">
+        <p class="l-meta u-hero__eyebrow">INDEPENDENT DESIGNER &amp; TOOL MAKER</p>
         <h1 class="l-display u-hero__title">
-          デザインも、道具も、<br />自分でつくる。
+          VISUAL<br />SYSTEMS<br /><span>&amp; TOOLS</span>
         </h1>
         <p class="u-hero__lead">
-          Web 制作の現場でデザインを担当しながら、Figma プラグインやブックマークレットなど、
-          制作を速く正確にする道具を自作しています。
+          Webのデザインをつくりながら、制作を少し軽く、正確にするための道具もつくっています。
         </p>
       </div>
+      <p class="l-meta u-hero__location">TOKYO, JAPAN<br />↓ SELECTED WORKS</p>
     </div>
   </section>
 
@@ -32,7 +33,7 @@ const featured = works.slice(0, 6);
     featured.length > 0 && (
       <section class="u-home-works">
         <div class="l-container">
-          <h2 class="l-meta u-home-works__heading">WORKS</h2>
+          <div class="u-home-works__head"><h2 class="l-meta u-home-works__heading">SELECTED WORKS</h2><p class="l-meta">01—{String(featured.length).padStart(2, '0')}</p></div>
           <WorksGrid>
             {featured.map((work) => (
               <WorkCard work={work} />

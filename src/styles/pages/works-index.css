@@ -1,10 +1,12 @@
 .u-works-index__title {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  padding-block: clamp(3rem, 8vw, 5rem) 0;
+  font-family: var(--font-body);
+  font-size: clamp(3rem, 8vw, 7rem);
+  letter-spacing: -.09em;
+  padding-block: clamp(3rem, 8vw, 7rem) 0;
 }
 
 .u-works-index__category {
-  margin-block-start: var(--space-section);
+  margin-block-start: clamp(4rem, 9vw, 8rem);
 }
 
 .u-works-index__category:first-of-type {
@@ -13,11 +15,13 @@
 
 .u-works-index__category-header {
   display: flex;
-  gap: 1.25rem;
-  align-items: flex-start;
-  margin-block-end: 2.5rem;
+  justify-content: space-between;
+  align-items: end;
+  margin-block-end: 1.25rem;
+  padding-block-end: .75rem;
+  border-block-end: 1px solid var(--ink);
 }
 
 .u-works-index__category-title {
-  font-size: 1.375rem;
+  font-size: clamp(1.25rem, 2.5vw, 2rem);
 }
