@@ -4,7 +4,7 @@ category: design
 summary: ここに作品の1行紹介を書きます。一覧のカードに表示されます。
 date: 2026-01-15
 tags: [Figma, UIデザイン]
-# thumbnail: /images/sample-design.png  ← public/images/ に画像を置いてパスを指定
+thumbnail: /images/dummy-design-thumbnail.png # ダミー画像。実際のサムネイルに差し替えてください
 ---
 
 ## 概要

@@ -11,9 +11,9 @@
 .u-work__title {
   max-width: 13em;
   font-family: var(--font-body);
-  font-size: clamp(2.25rem, 5.5vw, 5.5rem);
-  line-height: .95;
-  letter-spacing: -.075em;
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  line-height: 1.5;
+  letter-spacing: -0.05rem;
   margin-block-start: 1rem;
 }
 
