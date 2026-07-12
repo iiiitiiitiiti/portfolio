@@ -1,0 +1,39 @@
+.m-back-to-top {
+  --back-to-top-bottom: 1.5rem;
+  position: fixed;
+  z-index: 10;
+  right: clamp(1rem, 3vw, 2.5rem);
+  bottom: var(--back-to-top-bottom);
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .65rem .75rem;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: .65rem var(--font-meta);
+  letter-spacing: .08em;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(.75rem);
+  transition: opacity .25s ease, transform .25s ease, bottom .12s ease;
+}
+
+.m-back-to-top--visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.m-back-to-top:hover {
+  border-color: var(--ai);
+  background: var(--accent);
+}
+
+.m-back-to-top > span:first-child {
+  color: var(--ai);
+  font-size: 1rem;
+  line-height: .7;
+}

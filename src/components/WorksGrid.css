@@ -1,9 +1,7 @@
 .m-works-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: 1px;
-  border: 1px solid var(--line);
-  background: var(--line);
+  gap: clamp(0.75rem, 2vw, 1.5rem);
 }
 
 .m-works-grid > * {
@@ -14,6 +12,17 @@
   grid-column: span 12;
 }
 
+/* 作品が1件だけのカテゴリは、カードの2カラム幅でグリッド自体を詰める */
+.m-works-grid:has(> :only-child) {
+  grid-template-columns: repeat(6, 1fr);
+  width: calc(50% + 0.5px);
+}
+
 @media (max-width: 42rem) {
+  .m-works-grid:has(> :only-child) {
+    grid-template-columns: repeat(12, 1fr);
+    width: auto;
+  }
+
   .m-works-grid > *, .m-works-grid > *:nth-child(3n) { grid-column: span 12; }
 }

@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import './Base.css';
 import '../styles/modules/tate-label.css';
+import BackToTop from '../components/BackToTop.astro';
 
 interface Props {
   title: string;
@@ -43,6 +44,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <main>
       <slot />
     </main>
+
+    <BackToTop />
 
     <footer class="u-footer">
       <div class="l-container u-footer__inner">
