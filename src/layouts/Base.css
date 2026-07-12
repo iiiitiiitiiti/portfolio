@@ -6,19 +6,26 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-block: 1.25rem;
+  min-height: 5.5rem;
 }
 
 .u-header__name {
-  font-size: 1rem;
-  letter-spacing: 0.14em;
+  font-family: var(--font-meta);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   color: var(--ink);
   text-decoration: none;
 }
 
+.u-header__name::before {
+  content: '● ';
+  color: var(--ai);
+}
+
 .u-header__nav-list {
   display: flex;
-  gap: 2rem;
+  gap: clamp(1.5rem, 4vw, 4rem);
   list-style: none;
   padding: 0;
 }
@@ -26,8 +33,10 @@
 .u-header__nav-link {
   color: var(--ink);
   text-decoration: none;
-  font-size: 0.9375rem;
-  letter-spacing: 0.08em;
+  font-family: var(--font-meta);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .u-header__nav-link:hover {
@@ -36,6 +45,17 @@
 
 .u-footer {
   border-block-start: 1px solid var(--line);
-  padding-block: 2.5rem;
+  padding-block: 1.5rem;
   margin-block-start: var(--space-section);
+}
+
+.u-footer__inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+@media (max-width: 36rem) {
+  .u-footer__inner { display: block; }
+  .u-footer__inner p + p { margin-block-start: .5rem; }
 }

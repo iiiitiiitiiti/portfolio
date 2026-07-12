@@ -1,0 +1,66 @@
+:root { --cream: #f5f0e5; --black: #101010; --lime: #d6ff36; --blue: #2537ff; --orange: #ff6347; --line: rgba(245,240,229,.25); }
+* { box-sizing: border-box; margin: 0; }
+.u-directions { background: #111; color: var(--cream); font-family: 'Zen Kaku Gothic New', sans-serif; }
+.u-directions__header { display: flex; justify-content: space-between; gap: 1rem; padding: 1rem 1.5rem; border-bottom: 1px solid #444; font: .7rem 'DM Mono', monospace; letter-spacing: .08em; }
+.u-directions__back { color: inherit; text-decoration-color: var(--lime); text-underline-offset: .3em; }
+.u-directions__main { max-width: 110rem; margin: auto; }
+.u-direction { display: grid; grid-template-columns: minmax(16rem, .72fr) 1.28fr; min-height: 47rem; border-bottom: 1px solid #444; }
+.u-direction__intro { padding: clamp(2rem, 5vw, 5rem); display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; }
+.u-direction__number { color: var(--lime); font: .7rem 'DM Mono', monospace; letter-spacing: .1em; }
+.u-direction__intro h1 { font-family: 'Shippori Mincho B1', serif; font-size: clamp(2rem, 3.4vw, 4rem); line-height: 1.25; letter-spacing: -.04em; }
+.u-direction__intro > p:last-child { max-width: 26em; color: #bbb; font-size: .87rem; line-height: 1.9; }
+.u-editorial-preview { position: relative; overflow: hidden; min-height: 35rem; padding: 1.5rem; background: var(--cream); color: var(--black); display: flex; flex-direction: column; justify-content: space-between; }
+.u-editorial-preview::before { content: ''; position: absolute; width: 45%; aspect-ratio: 1; border-radius: 50%; right: -9%; top: 23%; background: var(--orange); }
+.u-editorial-preview__top, .u-editorial-preview__bottom { display: flex; justify-content: space-between; gap: 1rem; position: relative; z-index: 1; font: .63rem 'DM Mono', monospace; letter-spacing: .08em; }
+.u-editorial-preview__kicker { position: relative; z-index: 1; margin-top: 7vw; font: .65rem 'DM Mono', monospace; letter-spacing: .1em; }
+.u-editorial-preview h2 { position: relative; z-index: 1; font: 700 clamp(4rem, 9vw, 10rem)/.78 'Zen Kaku Gothic New', sans-serif; letter-spacing: -.1em; }
+.u-editorial-preview h2 em { color: var(--blue); font-family: 'Shippori Mincho B1', serif; font-weight: 600; }
+.u-lab-preview { background: #111316; color: var(--cream); min-height: 35rem; padding: 1.5rem; overflow: hidden; border-left: 1px solid #444; font-family: 'DM Mono', monospace; }
+.u-lab-preview__nav { display: flex; justify-content: space-between; gap: 1rem; font-size: .65rem; letter-spacing: .07em; }
+.u-lab-preview__nav b { color: var(--lime); }
+.u-lab-preview__grid { display: grid; grid-template-columns: 1fr 1.3fr; grid-template-rows: 1fr 1fr; min-height: 29rem; margin-top: 2rem; border: 1px solid var(--line); background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 100% 50%, 50% 100%; }
+.u-lab-preview__status, .u-lab-preview__note { padding: 1.25rem; font-size: clamp(.6rem, 1.1vw, .82rem); line-height: 1.75; }
+.u-lab-preview__status b, .u-lab-preview__note b { color: var(--lime); font-weight: 400; }
+.u-lab-preview h2 { grid-row: span 2; align-self: center; padding: 1.25rem; font-size: clamp(3.5rem, 7vw, 8rem); line-height: .82; letter-spacing: -.12em; color: var(--lime); }
+.u-lab-preview__ticker { margin: 1rem -1.5rem -1.5rem; padding: .7rem; white-space: nowrap; background: var(--lime); color: #111; font-size: .65rem; }
+.u-poster-preview { position: relative; min-height: 35rem; overflow: hidden; background: var(--blue); color: var(--cream); padding: 1.5rem; }
+.u-poster-preview__corner { position: absolute; top: 1.5rem; left: 1.5rem; font: .68rem/1.35 'DM Mono', monospace; letter-spacing: .08em; }
+.u-poster-preview__corner--right { left: auto; right: 1.5rem; text-align: right; }
+.u-poster-preview__circle { position: absolute; width: 60%; aspect-ratio: 1; border-radius: 50%; top: 12%; left: 18%; background: var(--lime); }
+.u-poster-preview h2 { position: relative; z-index: 1; margin-top: 20%; font: 700 clamp(3rem, 7vw, 8rem)/.94 'Shippori Mincho B1', serif; letter-spacing: -.08em; }
+.u-poster-preview h2 span { margin-left: 13%; color: var(--orange); }
+.u-poster-preview__caption { position: absolute; bottom: 3.5rem; left: 1.5rem; font: .65rem/1.5 'DM Mono', monospace; letter-spacing: .08em; }
+.u-poster-preview__bar { position: absolute; left: 0; right: 0; bottom: 0; overflow: hidden; padding: .65rem; background: var(--orange); color: #111; white-space: nowrap; font: .68rem 'DM Mono', monospace; letter-spacing: .15em; }
+@media (max-width: 48rem) { .u-direction { grid-template-columns: 1fr; } .u-direction__intro { min-height: 27rem; gap: 2rem; } .u-lab-preview { border-left: 0; } .u-editorial-preview, .u-lab-preview, .u-poster-preview { min-height: 31rem; } }
+
+.u-swiss-preview { position: relative; min-height: 35rem; overflow: hidden; padding: 1.5rem; background: #f2f0ed; color: #3e4655; font-family: 'DM Mono', monospace; }
+.u-swiss-preview__head { display: flex; justify-content: space-between; font-size: .65rem; letter-spacing: .07em; }
+.u-swiss-preview__rule { height: .8rem; margin: 1.25rem -1.5rem 0; background: #c8c9e7; }
+.u-swiss-preview__side { position: absolute; top: 8.5rem; left: 1.5rem; font-size: .6rem; line-height: 1.5; writing-mode: vertical-rl; }
+.u-swiss-preview h2 { margin: 3rem 0 0 14%; font: 700 clamp(3.5rem, 7.5vw, 8rem)/.84 'Zen Kaku Gothic New', sans-serif; letter-spacing: -.1em; }
+.u-swiss-preview h2 span { color: #8796bb; }
+.u-swiss-preview__project { position: absolute; bottom: 2.6rem; left: 25%; display: grid; grid-template-columns: 1fr 2fr auto; align-items: end; gap: 1.5rem; width: 65%; padding-top: .7rem; border-top: 1px solid #9ba1af; }
+.u-swiss-preview__project p, .u-swiss-preview__project i { font-size: .55rem; font-style: normal; }
+.u-swiss-preview__project b { font: 600 clamp(.9rem, 1.7vw, 1.55rem)/1.15 'Shippori Mincho B1', serif; }
+.u-swiss-preview__project i { font-size: 1.5rem; color: #8796bb; }
+.u-swiss-preview__foot { position: absolute; bottom: .7rem; left: 1.5rem; font-size: .55rem; letter-spacing: .05em; }
+.u-archive-preview { position: relative; min-height: 35rem; overflow: hidden; padding: 1.5rem; color: #4b443e; background: #e7e0d4; font-family: 'Shippori Mincho B1', serif; }
+.u-archive-preview__nav { display: flex; justify-content: space-between; font: .72rem 'Zen Kaku Gothic New', sans-serif; letter-spacing: .03em; }
+.u-archive-preview__nav b { font-weight: 700; }
+.u-archive-preview__frame { position: absolute; top: 18%; right: 9%; width: 40%; aspect-ratio: .78; overflow: hidden; background: #c2b09b; }
+.u-archive-preview__frame::after { content: ''; position: absolute; inset: 0; background: linear-gradient(140deg, transparent 30%, rgba(255,255,255,.5)); }
+.u-archive-preview__orb { position: absolute; width: 75%; aspect-ratio: 1; border-radius: 50%; right: -15%; bottom: -5%; background: #8ba48c; }
+.u-archive-preview__frame p { position: absolute; z-index: 1; bottom: .7rem; left: .7rem; font: .48rem/1.45 'DM Mono', monospace; }
+.u-archive-preview__copy { position: absolute; top: 25%; left: 8%; z-index: 1; }
+.u-archive-preview__copy > p { margin-bottom: 1.1rem; font: .63rem/1.55 'DM Mono', monospace; }
+.u-archive-preview__copy h2 { font-size: clamp(1.65rem, 3.5vw, 3.7rem); line-height: 1.4; font-weight: 600; letter-spacing: -.04em; }
+.u-archive-preview__link { position: absolute; bottom: 2rem; left: 8%; padding-bottom: .25rem; border-bottom: 1px solid #4b443e; font: .6rem 'DM Mono', monospace; }
+.u-notebook-preview { position: relative; min-height: 35rem; overflow: hidden; padding: 1.5rem; color: #20282c; background-color: #e5edf0; background-image: linear-gradient(rgba(32,40,44,.14) 1px, transparent 1px), linear-gradient(90deg, rgba(32,40,44,.14) 1px, transparent 1px); background-size: 1.8rem 1.8rem; }
+.u-notebook-preview__top { display: flex; justify-content: space-between; font: .65rem 'DM Mono', monospace; letter-spacing: .04em; }
+.u-notebook-preview__scribble { position: absolute; top: 16%; left: 12%; font: 700 clamp(3rem, 6vw, 6.5rem)/.88 'Shippori Mincho B1', serif; transform: rotate(-7deg); }
+.u-notebook-preview__scribble i { color: #f1644b; font-style: normal; }
+.u-notebook-preview__tape { position: absolute; width: 30%; height: 1.4rem; top: 15%; right: 16%; background: rgba(255,218,75,.75); transform: rotate(10deg); }
+.u-notebook-preview__card { position: absolute; right: 10%; bottom: 16%; width: 38%; min-height: 9.5rem; padding: 1.1rem; background: #fffded; box-shadow: .5rem .6rem 0 rgba(32,40,44,.12); transform: rotate(3deg); display: flex; flex-direction: column; }
+.u-notebook-preview__card p, .u-notebook-preview__card span { font: .55rem 'DM Mono', monospace; }
+.u-notebook-preview__card b { margin-block: .7rem auto; font: 600 clamp(.9rem, 1.4vw, 1.35rem)/1.25 'Shippori Mincho B1', serif; }
+.u-notebook-preview__note { position: absolute; bottom: 2rem; left: 10%; font: .67rem/1.7 'DM Mono', monospace; transform: rotate(-1deg); }

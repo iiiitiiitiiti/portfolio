@@ -1,0 +1,117 @@
+---
+import '../../styles/pages/directions.css';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Design directions — Fujimoto Taiga</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Shippori+Mincho+B1:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="u-directions">
+    <header class="u-directions__header">
+      <a href={`${base}/`} class="u-directions__back">← BACK TO CURRENT SITE</a>
+      <p>REFRESH STUDY / 03 DIRECTIONS</p>
+    </header>
+
+    <main class="u-directions__main">
+      <section class="u-direction u-direction--editorial">
+        <div class="u-direction__intro">
+          <p class="u-direction__number">01 / EDITORIAL CUT</p>
+          <h1>表紙のように、<br />一瞬で伝える。</h1>
+          <p>余白と極端な文字サイズで、個人の視点を前面に出す案。落ち着きは残しつつ、いまの和文ポートフォリオから明確に距離を取ります。</p>
+        </div>
+        <div class="u-editorial-preview" aria-label="エディトリアル方向のプレビュー">
+          <div class="u-editorial-preview__top"><span>TAIGA FUJIMOTO</span><span>2026 / SELECTED WORKS</span></div>
+          <p class="u-editorial-preview__kicker">DESIGNER / TOOL MAKER</p>
+          <h2>MAKE<br /><em>USEFUL</em><br />THINGS.</h2>
+          <div class="u-editorial-preview__bottom"><span>Web / Tool / Visual</span><span>↓ Scroll to explore</span></div>
+        </div>
+      </section>
+
+      <section class="u-direction u-direction--lab">
+        <div class="u-direction__intro">
+          <p class="u-direction__number">02 / MAKER'S LAB</p>
+          <h1>デザインと実装の<br />“現場感”を見せる。</h1>
+          <p>作品を完成品ではなく、観察・試行・改善のログとして見せる案。Figmaプラグインや自作ツールという強みが最も自然に伝わります。</p>
+        </div>
+        <div class="u-lab-preview" aria-label="制作ラボ方向のプレビュー">
+          <div class="u-lab-preview__nav"><b>● TAIGA / LAB</b><span>WORKS　ABOUT　[JP]</span></div>
+          <div class="u-lab-preview__grid">
+            <p class="u-lab-preview__status">SYSTEM STATUS<br /><b>BUILDING USEFUL<br />INTERFACES_</b></p>
+            <h2>DESIGN<br />×<br />TOOLS</h2>
+            <div class="u-lab-preview__note">CURRENT FOCUS<br /><b>01—Visual systems</b><br /><b>02—Tiny automations</b></div>
+          </div>
+          <div class="u-lab-preview__ticker">LATEST EXPERIMENTS　✳　LATEST EXPERIMENTS　✳　LATEST EXPERIMENTS　✳</div>
+        </div>
+      </section>
+
+      <section class="u-direction u-direction--poster">
+        <div class="u-direction__intro">
+          <p class="u-direction__number">03 / PLAYFUL POSTER</p>
+          <h1>親しみと実験性を<br />同時に出す。</h1>
+          <p>グラフィックポスターのような色・図形・リズムを使う案。個人制作の楽しさが出るため、堅すぎない印象を作りたい場合に向きます。</p>
+        </div>
+        <div class="u-poster-preview" aria-label="プレイフルポスター方向のプレビュー">
+          <p class="u-poster-preview__corner">FUJIMOTO<br />TAIGA</p>
+          <p class="u-poster-preview__corner u-poster-preview__corner--right">DESIGN<br />TOOLS</p>
+          <div class="u-poster-preview__circle"></div>
+          <h2>つくる。<br /><span>ためす。</span><br />ととのえる。</h2>
+          <p class="u-poster-preview__caption">A PORTFOLIO OF<br />DIGITAL CRAFT &amp; SMALL TOOLS</p>
+          <div class="u-poster-preview__bar">WORKS　WORKS　WORKS　WORKS　WORKS　WORKS</div>
+        </div>
+      </section>
+
+      <section class="u-direction u-direction--swiss">
+        <div class="u-direction__intro">
+          <p class="u-direction__number">04 / SIGNAL SYSTEM</p>
+          <h1>端正で、<br />強い。</h1>
+          <p>情報設計そのものをデザインにする案。作品数が増えても崩れず、デザイナーとしての整理力と信頼感を最も端正に伝えます。</p>
+        </div>
+        <div class="u-swiss-preview" aria-label="シグナルシステム方向のプレビュー">
+          <div class="u-swiss-preview__head"><b>TF—PORTFOLIO</b><span>INDEX　WORKS　INFO</span></div>
+          <div class="u-swiss-preview__rule"></div>
+          <p class="u-swiss-preview__side">TAIGA FUJIMOTO<br />INDEPENDENT DESIGNER</p>
+          <h2>VISUAL<br />SYSTEMS<br /><span>&amp; TOOLS</span></h2>
+          <div class="u-swiss-preview__project"><p>SELECTED PROJECT / 01</p><b>Small things<br />that improve<br />the work.</b><i>↗</i></div>
+          <p class="u-swiss-preview__foot">TOKYO, JAPAN　　2026</p>
+        </div>
+      </section>
+
+      <section class="u-direction u-direction--archive">
+        <div class="u-direction__intro">
+          <p class="u-direction__number">05 / QUIET ARCHIVE</p>
+          <h1>作品の空気を、<br />静かに残す。</h1>
+          <p>余白、淡い写真、控えめな装飾で作品を主役にする案。職人的で長く見ても疲れない、上質な個人アーカイブの佇まいです。</p>
+        </div>
+        <div class="u-archive-preview" aria-label="クワイエットアーカイブ方向のプレビュー">
+          <div class="u-archive-preview__nav"><b>fujimoto taiga</b><span>works　　notes　　about</span></div>
+          <div class="u-archive-preview__frame"><div class="u-archive-preview__orb"></div><p>© 2026 / A PRIVATE COLLECTION OF<br />DESIGN, CODE AND OBSERVATIONS</p></div>
+          <div class="u-archive-preview__copy"><p>Designer &amp; maker<br />based in Tokyo.</p><h2>日々の手ざわりを<br />少しだけ、良くする。</h2></div>
+          <p class="u-archive-preview__link">VIEW SELECTED WORKS　→</p>
+        </div>
+      </section>
+
+      <section class="u-direction u-direction--notebook">
+        <div class="u-direction__intro">
+          <p class="u-direction__number">06 / OPEN NOTEBOOK</p>
+          <h1>考えていることも、<br />作品にする。</h1>
+          <p>ポートフォリオを完成品の展示だけにしない案。ラフなメモや途中の試行を混ぜ、ものづくりの人柄と更新され続ける感覚を伝えます。</p>
+        </div>
+        <div class="u-notebook-preview" aria-label="オープンノートブック方向のプレビュー">
+          <div class="u-notebook-preview__top"><b>taiga's notebook</b><span>12 JUL 2026　　☼ 29°C</span></div>
+          <div class="u-notebook-preview__scribble">design<br />is a<br /><i>verb</i></div>
+          <div class="u-notebook-preview__tape"></div>
+          <div class="u-notebook-preview__card"><p>NOW MAKING</p><b>Tools for less<br />repetitive work</b><span>Figma Plugin / in progress</span></div>
+          <p class="u-notebook-preview__note">Hi. I design interfaces and<br />make little things for makers.<br /><u>Read my latest note ↗</u></p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

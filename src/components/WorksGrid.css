@@ -1,5 +1,19 @@
 .m-works-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-  gap: 2.5rem 2rem;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1px;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+
+.m-works-grid > * {
+  grid-column: span 6;
+}
+
+.m-works-grid > *:nth-child(3n) {
+  grid-column: span 12;
+}
+
+@media (max-width: 42rem) {
+  .m-works-grid > *, .m-works-grid > *:nth-child(3n) { grid-column: span 12; }
 }
